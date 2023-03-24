@@ -1,0 +1,52 @@
+.contain {
+    background-color: #262b3a;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-image: url('../../static/img/bg.png');
+    // background-repeat: no-repeat;
+    // background-size: 100% 100%;
+}
+
+.desroct {
+    background-color: aqua;
+    width: 1vw;
+    height: 100vh;
+    position: fixed;
+    left: 10%;
+    -webkit-box-shadow: 0px 0px 32px 8px rgba(45, 255, 196, 0.7);
+    -moz-box-shadow: 0px 0px 32px 8px rgba(45, 255, 196, 0.7);
+    box-shadow: 0px 0px 32px 8px rgba(45, 255, 196, 0.7);
+}
+
+.desroct1 {
+    background-color: rgb(255, 255, 0);
+    width: 1vw;
+    height: 80vh;
+    position: fixed;
+    left: 16%;
+    top: 0;
+    -webkit-box-shadow: 0px 0px 32px 8px rgba(227, 255, 46, 0.9);
+    -moz-box-shadow: 0px 0px 32px 8px rgba(227, 255, 46, 0.9);
+    box-shadow: 0px 0px 32px 8px rgba(227, 255, 46, 0.9);
+}
+
+.base-input {
+    color: #2e3447;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: unset;
+    // background-color: #FFFFFF00;
+}
+
+.qr {
+    background-image: url("./qn1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 2vh;
+    width: 2vw;
+    font-size: large;
+}
