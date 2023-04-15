@@ -1,33 +1,50 @@
 import React from "react";
 import './Login.scss';
-import { Card, Space, Tag, Avatar, Col, Row, Button, Checkbox, Form, Input } from 'antd';
+import './Column.scss';
+import { Card, Avatar, Col, Row, Button, Checkbox, Form, Input } from 'antd';
+import { $login } from '../../api/LoginApi'
 
 
 export default function Login(params) {
     return (
         <div className="contain">
-            <div className="desroct"></div>
-            <div className="desroct1"></div>
+            <div className="light-column"></div>
+            <div className="light-column-yellow"></div>
+            <div className="light-column-red"></div>
+            <div className="light-column-orange"></div>
+            <div className="light-column-green"></div>
+            <div className="light-column-white"></div>
+            <div className="light-column-pink"></div>
+            <div className="light-column-grey"></div>
+            <div className="light-column-black"></div>
+            <div className="light-column-orange2"></div>
+            <div className="light-column0"></div>
+            <div className="light-column1"></div>
+            <div className="light-column2"></div>
+            <div className="light-column3"></div>
+            <div className="logo one">案例 · 数据平台</div>
+            <div className="bottom-title">Poor Center@Ango</div>
+            <div className="bottom-title-other">{bottomTitleOther}</div>
             <Card
                 title={
                     <Row align={"middle"}>
                         <Col span={12}>
                             <Avatar size={36} src="./fish.png" draggable="false" />
                         </Col>
-                        <Col span={12}>Ango</Col>
+                        <Col span={12} className="move-disable">???</Col>
                     </Row>
                 }
                 extra={<Row className="qr">
-                    ⛔
+                    <span className="move-disable">⛔</span>
                 </Row>}
                 style={{
                     width: 500,
+                    //background: "#356170d6"
                 }}
                 headStyle={{
-                    color: "#FFFFFF"
+                    color: "#FFFFFF",
                 }}
                 bodyStyle={{
-                    //color:"#FFFFFF"
                 }}
             >
                 <Form name="Login"
@@ -37,7 +54,7 @@ export default function Login(params) {
                         maxWidth: 600,
                     }}
                     initialValues={{
-                        remember: true,
+                        remember: false,
                     }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
@@ -45,7 +62,8 @@ export default function Login(params) {
                 >
                     <Form.Item
                         label="用 户"
-                        name="username"
+                        name="uname"
+                        className="move-disable"
                         rules={[
                             {
                                 required: true,
@@ -53,12 +71,13 @@ export default function Login(params) {
                             },
                         ]}
                     >
-                        <Input placeholder="手机号\账号\用户名" className="base-input" />
+                        <Input placeholder="手机号\邮箱\用户名" allowClear className="base-input" />
                     </Form.Item>
 
                     <Form.Item
-                        label="密 码"
-                        name="password"
+                        label="密 钥"
+                        className="move-disable"
+                        name="pwd"
                         rules={[
                             {
                                 required: true,
@@ -74,21 +93,25 @@ export default function Login(params) {
                             name="remember"
                             valuePropName="checked"
                             wrapperCol={{
-                                offset: 8,
+                                offset: 12,
                                 span: 12,
                             }}
                         >
-                            <Checkbox>🔞</Checkbox>
+                            <Checkbox>
+                                <span className="move-disable">🔞</span>
+                            </Checkbox>
                         </Form.Item></Col>
                         <Col span={12}><Form.Item
                             name="remember1"
                             valuePropName="checked"
                             wrapperCol={{
-                                offset: 5,
+                                offset: 7,
                                 span: 12,
                             }}
                         >
-                            <Checkbox>🆗</Checkbox>
+                            <Checkbox>
+                                <span className="move-disable">🐾</span>
+                            </Checkbox>
                         </Form.Item></Col>
                     </Row>
 
@@ -121,7 +144,11 @@ export default function Login(params) {
     )
 }
 
+
+
+const bottomTitleOther = "废品 | 书籍 | 旧车 | 相亲 | 外卖 | 抢票 | 软件 | 硬件 | 电子 | 快递 | 求职 | 陪玩 | 接娃 | 开锁 | 修理 | 看门 | 教育 | 摸奖 | 拼单 | 种地 | 卖菜"
 const onFinish = (values) => {
+    $login(values)
     console.log('Success:', values);
 };
 const onFinishFailed = (errorInfo) => {

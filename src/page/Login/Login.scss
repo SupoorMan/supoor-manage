@@ -5,41 +5,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    // background-image: url('../../static/img/bg.png');
-    // background-repeat: no-repeat;
-    // background-size: 100% 100%;
-}
-
-.desroct {
-    background-color: aqua;
-    width: 1vw;
-    height: 100vh;
-    position: fixed;
-    left: 10%;
-    -webkit-box-shadow: 0px 0px 32px 8px rgba(45, 255, 196, 0.7);
-    -moz-box-shadow: 0px 0px 32px 8px rgba(45, 255, 196, 0.7);
-    box-shadow: 0px 0px 32px 8px rgba(45, 255, 196, 0.7);
-}
-
-.desroct1 {
-    background-color: rgb(255, 255, 0);
-    width: 1vw;
-    height: 80vh;
-    position: fixed;
-    left: 16%;
-    top: 0;
-    -webkit-box-shadow: 0px 0px 32px 8px rgba(227, 255, 46, 0.9);
-    -moz-box-shadow: 0px 0px 32px 8px rgba(227, 255, 46, 0.9);
-    box-shadow: 0px 0px 32px 8px rgba(227, 255, 46, 0.9);
 }
 
 .base-input {
-    color: #2e3447;
+    //color: #2e3447;
     border-top: none;
     border-left: none;
     border-right: none;
     border-radius: unset;
-    // background-color: #FFFFFF00;
+    background-color: #FFFFFF00;
 }
 
 .qr {
@@ -49,4 +23,75 @@
     height: 2vh;
     width: 2vw;
     font-size: large;
+}
+
+.move-disable {
+    user-select: none;
+}
+
+.logo {
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    width: 0;
+    font-size: 48px;
+    line-height: 64px;
+    user-select: none;
+    font-family: "Courier New", Courier, monospace;
+    white-space: nowrap;
+    animation: width 2s steps(13) forwards;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0px;
+      height: 32px;
+      border-right: 1px solid #ffffff;
+      animation: showInfinite 0.5s infinite both;
+    }
+  }
+
+  .one {
+    animation-delay: 0s;
+  }
+
+  @keyframes width {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 13em;
+    }
+  }
+  @keyframes showInfinite {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
+
+.logo-disable {
+    position: absolute;
+    color: azure;
+    top: 10%;
+    font-size: 100px;
+    user-select: none;
+}
+
+.bottom-title {
+    position: absolute;
+    color: rgb(77, 82, 82);
+    bottom: 6%;
+    font-size: 14px;
+    user-select: none;
+}
+
+.bottom-title-other {
+    position: absolute;
+    color: rgb(123, 127, 127);
+    bottom: 3%;
+    font-size: 8px;
+    user-select: none;
 }

@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'antd/dist/reset.css';
 import './App.css';
-import { Button } from 'antd';
 import Layout from './page/Layout/Layout';
 import Login from './page/Login/Login'
 
