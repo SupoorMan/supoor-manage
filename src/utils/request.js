@@ -5,7 +5,8 @@ var instance = axios.create({
     baseURL,
     timeout: 3000,
     headers: {
-        'token': 'hello,ango!'
+        'Token': 'hello,ango!',
+        'Source': 'web'
     }
 })
 
@@ -17,7 +18,7 @@ var instance = axios.create({
  */
 export function doGet(url, params) {
     return new Promise((resolve, reject) => {
-        axios.get(baseURL + url, {
+        instance.get(baseURL + url, {
             params: params
         }).then(res => {
             resolve(res.data);
@@ -34,7 +35,7 @@ export function doGet(url, params) {
  */
 export function doPost(url, params) {
     return new Promise((resolve, reject) => {
-        axios.post(baseURL + url, params)
+        instance.post(baseURL + url, params)
             .then(res => {
                 resolve(res.data);
             })
