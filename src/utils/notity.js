@@ -1,13 +1,13 @@
-import { SmileOutlined } from '@ant-design/icons';
+// import { SmileOutlined } from '@ant-design/icons';
 import { notification } from 'antd';
 
 const openNotifiy = (message, description) => {
     notification.open({
         message,
         description,
-        duration: 1.5,
+        duration: 2,
         onClick: () => {
-            console.log('Notification Clicked!');
+            console.log('');
         },
     });
 };

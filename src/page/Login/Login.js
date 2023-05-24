@@ -1,11 +1,32 @@
+import { Avatar, Button, Card, Checkbox, Col, Form, Input, Row } from 'antd';
 import React from "react";
-import './Login.scss';
+import { useNavigate } from "react-router-dom";
+import openNotifiy from '../../utils/notity'
+import { $login } from '../../api/LoginApi';
 import './Column.scss';
-import { Card, Avatar, Col, Row, Button, Checkbox, Form, Input } from 'antd';
-import { $login } from '../../api/LoginApi'
+import './Login.scss';
+
 
 
 export default function Login(params) {
+    const navigate = useNavigate();
+
+    const onFinish = async (values) => {
+        let data = await $login(values)
+        if (data) {
+            openNotifiy("登录提示", data.msg)
+            if (data.code === 200) {
+                navigate("/layout")
+            }
+        }
+
+        //navigate("/layout")
+    };
+
+    const onFinishFailed = (errorInfo) => {
+
+    };
+
     return (
         <div className="contain">
             <div className="light-column"></div>
@@ -62,7 +83,7 @@ export default function Login(params) {
                 >
                     <Form.Item
                         label="用 户"
-                        name="uname"
+                        name="username"
                         className="move-disable"
                         rules={[
                             {
@@ -77,7 +98,7 @@ export default function Login(params) {
                     <Form.Item
                         label="密 钥"
                         className="move-disable"
-                        name="pwd"
+                        name="password"
                         rules={[
                             {
                                 required: true,
@@ -133,8 +154,10 @@ export default function Login(params) {
                             }}
                         >
                             <Button type="primary" danger ghost>
-                                忘记密码
+                                忘记密钥
                             </Button>
+
+
                         </Form.Item></Col>
                     </Row>
 
@@ -144,13 +167,5 @@ export default function Login(params) {
     )
 }
 
+const bottomTitleOther = "废品 | 书籍 | 旧车 | 相亲 | 外卖 | 抢票 | 软件 | 硬件 | 电子 | 快递 | 求职 | 陪玩 | 接娃 | 开锁 | 修理 | 看门 | 教育 | 摸奖 | 拼单 | 种地 | 蔬菜 | 水果"
 
-
-const bottomTitleOther = "废品 | 书籍 | 旧车 | 相亲 | 外卖 | 抢票 | 软件 | 硬件 | 电子 | 快递 | 求职 | 陪玩 | 接娃 | 开锁 | 修理 | 看门 | 教育 | 摸奖 | 拼单 | 种地 | 卖菜"
-const onFinish = (values) => {
-    $login(values)
-    console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-};

@@ -1,12 +1,17 @@
 import axios from "axios";
 import { baseURL } from '../config'
 
+
 var instance = axios.create({
     baseURL,
-    timeout: 3000,
+    timeout: 30000,
+    // withCredentials: true,
+    // crossDomain: true,
     headers: {
-        'Token': 'hello,ango!',
-        'Source': 'web'
+        'token': sessionStorage.getItem('token') == null ? -1 : sessionStorage.getItem('token'),
+        'X-PRINCIPAL': sessionStorage.getItem('PRINCIPAL') == null ? -1 : sessionStorage.getItem('PRINCIPAL'),
+        'Source': 'web',
+        'Content-Type': 'application/json; charset=UTF-8'
     }
 })
 
@@ -37,7 +42,7 @@ export function doPost(url, params) {
     return new Promise((resolve, reject) => {
         instance.post(baseURL + url, params)
             .then(res => {
-                resolve(res.data);
+                resolve(res)
             })
             .catch(err => {
                 reject(err.data)
@@ -47,6 +52,9 @@ export function doPost(url, params) {
 
 // 请求前拦截器
 instance.interceptors.request.use(function (cnf) {
+    if (sessionStorage.getItem('token')) {
+        cnf.headers.token = sessionStorage.getItem('token');
+    }
     return cnf;
 }, function (e) {
     return Promise.reject(e)

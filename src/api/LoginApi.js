@@ -1,10 +1,15 @@
-import axios, { doPost } from "../utils/request";
-import openNotifiy from '../utils/notity'
+import axios, { doGet, doPost } from "../utils/request";
 
 // login
 export const $login = async (params) => {
-    console.log('登录请求')
-    let { data } = doPost('/auth/login',params)
-    openNotifiy('data.message')
-    console.log(data)
+    let { headers, data } = await doPost('/auth/login', params)
+
+    if (headers.token) {
+        if (sessionStorage.getItem('token') != null) {
+            sessionStorage.clear();
+        }
+        sessionStorage.setItem('token', headers.token)
+        sessionStorage.setItem('PRINCIPAL', data.data)
+    }
+    return data;
 }
